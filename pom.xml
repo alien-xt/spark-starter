@@ -1,0 +1,186 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>pers.alienxt</groupId>
+  <artifactId>spark-starter</artifactId>
+  <version>1.0</version>
+  <modules>
+    <module>spark-streaming</module>
+    <module>spark-common</module>
+    <module>spark-sql</module>
+    <module>spark-mllib</module>
+    <module>spark-graphx</module>
+    <module>spark-core</module>
+  </modules>
+  <packaging>pom</packaging>
+
+  <name>spark-starter</name>
+  <url>http://github.com/alienxt</url>
+
+  <!-- developers -->
+  <developers>
+    <developer>
+      <id>Alien</id>
+      <name>Alien</name>
+      <email>alien.xt.xm@gmail.com</email>
+      <roles>
+        <role>developer</role>
+      </roles>
+      <timezone>+8</timezone>
+    </developer>
+  </developers>
+
+  <!-- properties -->
+  <properties>
+    <maven.compiler.source>1.7</maven.compiler.source>
+    <maven.compiler.target>1.7</maven.compiler.target>
+    <encoding>UTF-8</encoding>
+
+    <junit.version>4.8.1</junit.version>
+    <scalatest.version>1.2</scalatest.version>
+    <scala.version>2.10.4</scala.version>
+    <hadoop.version>2.5.2</hadoop.version>
+    <spark.version>1.4.1</spark.version>
+
+    <mysql-connector-java.version>5.1.37</mysql-connector-java.version>
+    <jedis.version>2.5.2</jedis.version>
+    <commons-pool2.version>2.2</commons-pool2.version>
+    <jackson.version>1.9.13</jackson.version>
+  </properties>
+
+  <repositories>
+    <repository>
+      <id>spray repo</id>
+      <name>Spray Repository</name>
+      <url>http://repo.spray.io/</url>
+    </repository>
+    <repository>
+      <id>scala-tools.org</id>
+      <name>Scala-Tools Maven2 Repository</name>
+      <url>http://scala-tools.org/repo-releases</url>
+    </repository>
+  </repositories>
+
+
+  <dependencyManagement>
+
+    <dependencies>
+
+      <!-- Test -->
+      <dependency>
+        <groupId>junit</groupId>
+        <artifactId>junit</artifactId>
+        <version>${junit.version}</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.scalatest</groupId>
+        <artifactId>scalatest</artifactId>
+        <version>${scalatest.version}</version>
+        <scope>test</scope>
+      </dependency>
+
+      <!-- spark -->
+      <dependency>
+        <groupId>org.apache.spark</groupId>
+        <artifactId>spark-core_2.10</artifactId>
+        <version>${spark.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.spark</groupId>
+        <artifactId>spark-core_2.10</artifactId>
+        <version>${spark.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.spark</groupId>
+        <artifactId>spark-streaming_2.10</artifactId>
+        <version>${spark.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.spark</groupId>
+        <artifactId>spark-streaming-kafka_2.10</artifactId>
+        <version>${spark.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.spark</groupId>
+        <artifactId>spark-sql_2.10</artifactId>
+        <version>${spark.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.spark</groupId>
+        <artifactId>spark-mllib_2.10</artifactId>
+        <version>${spark.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.spark</groupId>
+        <artifactId>spark-graphx_2.10</artifactId>
+        <version>${spark.version}</version>
+      </dependency>
+
+
+
+      <!-- hadoop -->
+      <dependency>
+        <groupId>org.apache.hadoop</groupId>
+        <artifactId>hadoop-client</artifactId>
+        <version>${hadoop.version}</version>
+      </dependency>
+
+      <!-- others -->
+      <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <version>${mysql-connector-java.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>redis.clients</groupId>
+        <artifactId>jedis</artifactId>
+        <version>${jedis.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-pool2</artifactId>
+        <version>${commons-pool2.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.codehaus.jackson</groupId>
+        <artifactId>jackson-mapper-asl</artifactId>
+        <version>${jackson.version}</version>
+      </dependency>
+
+    </dependencies>
+  </dependencyManagement>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>net.alchim31.maven</groupId>
+        <artifactId>scala-maven-plugin</artifactId>
+        <version>3.2.0</version>
+        <executions>
+          <execution>
+            <id>compile-scala</id>
+            <phase>compile</phase>
+            <goals>
+              <goal>add-source</goal>
+              <goal>compile</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>test-compile-scala</id>
+            <phase>test-compile</phase>
+            <goals>
+              <goal>add-source</goal>
+              <goal>testCompile</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <scalaVersion>${scala.version}</scalaVersion>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>
